@@ -1,6 +1,10 @@
 const Sequelize = require('sequelize');
+let sequelize;
 
-const sequelize = new Sequelize(
+if (process.env.NODE_ENV === "production") {
+    sequelize = new Sequelize(process.env.DATABASE_URL);
+  }else{
+    sequelize = new Sequelize(
     process.env.DATABASE,
     process.env.USER,
     process.env.PASSWORD,
@@ -8,7 +12,8 @@ const sequelize = new Sequelize(
         host: process.env.HOST,
         dialect: 'postgres',
     }
-);
+
+)};
    
 const contacts = sequelize.define('contacts', {
     id: { type: Sequelize.INTEGER, autoIncrement: true,primaryKey:true },
@@ -18,6 +23,5 @@ const contacts = sequelize.define('contacts', {
     linkPrecedence: { type: Sequelize.STRING },
 })
 
-const AND = Sequelize.Op.and;
 sequelize.sync();
 module.exports = {sequelize,contacts,AND}
