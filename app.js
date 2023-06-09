@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(cors());
 app.use(Router);
 
-sequelize.authenticate().then(() => 'database connection successfull').catch(() => 'connection error');
+sequelize.authenticate().then(() => console.log('database connection successfull')).catch(() => console.log('Error connecting to db'));
 
 app.listen(port, () => {
     console.log(`Server listening on port ${port}`)
