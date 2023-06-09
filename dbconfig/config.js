@@ -24,4 +24,4 @@ const contacts = sequelize.define('contacts', {
 })
 
 sequelize.sync();
-module.exports = {sequelize,contacts,AND}
+module.exports = {sequelize,contacts}
