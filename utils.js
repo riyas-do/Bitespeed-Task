@@ -9,8 +9,7 @@ async function generateResult(primaryId) {
             emails.push(val.email);
             secondaryContactIds.push(val.id);
             phoneNumbers.push(val.phoneNumber);
-            return acc;
-        }, []);
+        });
     }
     emails.push(primaryData.email);
     phoneNumbers.push(primaryData.phoneNumber)
